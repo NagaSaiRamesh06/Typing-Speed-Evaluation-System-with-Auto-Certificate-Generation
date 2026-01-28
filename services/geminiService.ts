@@ -3,12 +3,13 @@ import { GEMINI_PROMPT } from "../constants";
 
 // Ideally, this should be proxied through a backend to hide the key, 
 // but for this client-side demo we access it directly if available.
-const API_KEY = process.env.API_KEY || '';
+const API_KEY = process.env.GEMINI_API_KEY || '';
 
 export const generateTypingText = async (): Promise<string> => {
   if (!API_KEY) {
     console.warn("No Gemini API Key found. Using fallback text.");
-    return Promise.reject("No API Key");
+    // Return mock text instead of rejecting
+    return "The quick brown fox jumps over the lazy dog. This typing test evaluates your speed and accuracy across various difficulty levels.";
   }
 
   try {
